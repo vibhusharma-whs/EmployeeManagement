@@ -17,13 +17,15 @@ namespace EmployeeManagement.Controllers
         }
         public string Index()
         {
-            return _empRepository.getEmployee(1).Name;
+            return _empRepository.getEmployee(1).Department;
         }
 
         public ViewResult Details()
         {
             Employee model = _empRepository.getEmployee(1);
-            return View("MyViews/Test.cshtml");
+            ViewData["Employee"] = model;
+            ViewData["Page Title"] = "Employee Details";
+            return View(model);
         }
     }
 }
